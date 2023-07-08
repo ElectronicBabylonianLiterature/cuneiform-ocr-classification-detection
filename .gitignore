@@ -1,0 +1,9 @@
+cuneiform_ocr/classification/data
+cuneiform_ocr/detection/data
+checkpoints
+/checkpoints
+*.pyc
+cuneiform_ocr/classification/data
+cuneiform_ocr/detection/data
+cuneiform_ocr/classification/logs
+cuneiform_ocr/detection/logs
