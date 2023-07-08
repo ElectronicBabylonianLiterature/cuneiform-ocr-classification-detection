@@ -80,13 +80,13 @@ visualizer = dict(
 optim_wrapper = dict(
     type='OptimWrapper',
     optimizer=dict(type='SGD', lr=0.0003, momentum=0.9, weight_decay=0.0005))
-train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=1500, val_interval=50)
+train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=1500, val_interval=1500)
 val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 param_scheduler = [dict(type='PolyLR', power=0.9, eta_min=1e-07, end=1500)]
 
 train_dataloader = dict(
-    batch_size=4,
+    batch_size=1,
     num_workers=4,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
@@ -270,4 +270,4 @@ optimizer_config = dict(
     type='GradientCumulativeOptimizerHook', cumulative_iters=4)
 custom_hooks = [dict(type='CustomTensorboardLoggerHook', by_epoch=True)]
 launcher = 'none'
-work_dir = 'logs/yunus'
+work_dir = 'logs/yunus_grayscale'

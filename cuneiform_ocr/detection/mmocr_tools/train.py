@@ -16,7 +16,7 @@ from cuneiform_ocr.custom_tensorboard_logger_hook import (
 from cuneiform_ocr.custom_logger import (
     CustomLoggerHook,
 )  # necessary so module gets registered
-from cuneiform_ocr.grayscale2 import Grayscale
+from cuneiform_ocr.detection.grayscale import Grayscale
 
 
 def parse_args():
