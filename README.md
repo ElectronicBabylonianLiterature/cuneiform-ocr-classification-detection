@@ -1,7 +1,7 @@
 ## Two-Stage Cuneiform Sign Detection (Detecting Bounding Boxes + Image Classification)
 
 This Repository based on mmocr and mmcv can be used for training the Model once trained one has to use a different
-repository based on mmdetection to unify both models to get the final model.
+repository (https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr) based on mmdetection to unify both models to get the final model.
 This is due to dependencies of the two repositories.
 
 The checkpoints of the pretrained models can be found here: https://drive.google.com/drive/folders/15i2c4R4znBZzI4Iv-PMBX_fBuiAggndr?usp=sharing
