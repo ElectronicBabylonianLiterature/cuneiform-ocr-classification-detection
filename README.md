@@ -7,7 +7,7 @@ This is due to dependencies of the two repositories.
 The checkpoints of the pretrained models can be found here: https://drive.google.com/drive/folders/15i2c4R4znBZzI4Iv-PMBX_fBuiAggndr?usp=sharing
 
 
-### Requirements (Tested with Python 3.11)
+### Requirements (Tested with Python 3.11 )
 - torch, torchvision
 - pip install -U openmim 
 - mim install mmengine (tested with 0.8.3)
