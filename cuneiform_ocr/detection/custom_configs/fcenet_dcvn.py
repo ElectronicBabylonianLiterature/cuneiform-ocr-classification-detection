@@ -170,7 +170,7 @@ default_hooks = dict(
         draw_pred=True))
 log_level = 'INFO'
 log_processor = dict(type='LogProcessor', window_size=10, by_epoch=True)
-load_from = '/home/ubuntu/cuneiform-ocr/checkpoints/detection/fcenet_resnet50-dcnv2.pth'
+load_from = '../../checkpoints/fcenet_resnet50-dcnv2.pth'
 resume = False
 val_evaluator = dict(type='HmeanIOUMetric')
 test_evaluator = dict(type='HmeanIOUMetric')

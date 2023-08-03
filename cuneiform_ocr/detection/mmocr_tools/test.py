@@ -10,7 +10,6 @@ from mmengine.runner import Runner
 from mmocr.utils import register_all_modules
 import cuneiform_ocr.custom_logger  # necessary so module gets registered
 import cuneiform_ocr.custom_tensorboard_logger_hook  # necessary so module gets registered
-from cuneiform_ocr.grayscale2 import Grayscale
 
 
 def parse_args():
