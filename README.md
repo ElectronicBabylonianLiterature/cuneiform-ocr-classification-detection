@@ -4,7 +4,7 @@ This Repository based on mmocr and mmcv can be used for training the Model once 
 repository (https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr) based on mmdetection to unify both models to get the final model.
 This is due to dependencies of the two repositories. For the data use https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr-data.
 
-The checkpoints of the pretrained models can be found (here)[https://syncandshare.lrz.de/getlink/fi39rfQ11LtbxEBTmwVs2u/]
+The checkpoints of the pretrained models can be found here: https://syncandshare.lrz.de/getlink/fi39rfQ11LtbxEBTmwVs2u/
 
 
 ### Requirements (Tested with Python 3.11 )
