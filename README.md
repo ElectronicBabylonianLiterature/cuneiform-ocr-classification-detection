@@ -27,8 +27,9 @@ There should be folder `cuneiform-ocr-classification-detection/checkpoints/` wit
     - textdet_imgs
     - textdet_test.json
     - textdet_train.json
-    - 
-- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn.py
+
+- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn_debug.py # validation set is used after one epoch to make sure everything is working
+- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn.py # validation set is used after 50 epochs
 #### Testing
 - cd cuneiform_ocr/detection
 - python3 mmocr_tools/test.py custom_configs/fcenet_dcvn.py ../../checkpoints/fcenet_resnet50-dcnv2.pth  (replace checkpoints with trained checkpoints)
