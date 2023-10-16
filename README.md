@@ -12,7 +12,7 @@ There should be folder `cuneiform-ocr-classification-detection/checkpoints/` wit
 - torch=="2.0.1", torchvision
 - pip install -U openmim 
 - mim install mmengine (tested with 0.8.3)
-- mim install "mmcls==1.0.0rc5" (installing as a dependency "mmcv==2.0.0"
+- mim install "mmcls==1.0.0rc5" (installing as a dependency "mmcv==2.0.0")
 - mim install "mmdet==3.0.0rc6"
 - mim install mmocr #tested with version 1.0.1
 - pip install -r requirements.txt
@@ -28,8 +28,8 @@ There should be folder `cuneiform-ocr-classification-detection/checkpoints/` wit
     - textdet_test.json
     - textdet_train.json
 
-- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn_debug.py # validation set is used after one epoch to make sure everything is working
-- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn.py # validation set is used after 50 epochs
+- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn_debug.py #validation set is used after one epoch to make sure everything is working
+- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn.py #validation set is used after 50 epochs
 #### Testing
 - cd cuneiform_ocr/detection
 - python3 mmocr_tools/test.py custom_configs/fcenet_dcvn.py ../../checkpoints/fcenet_resnet50-dcnv2.pth  (replace checkpoints with trained checkpoints)
@@ -65,10 +65,10 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
 
-In which case just uncomment the assert statement in `.venv/lib/python3.11/site-packages/mmcls/__init__.py` and 
+In which case just comment the assert statement in `.venv/lib/python3.11/site-packages/mmcls/__init__.py` and 
 everything should work.
 
 img shape error needs in `results['img_shape'] = img.shape[:2]` replace line 102 `img = mmcv.imfrombytes(
                 img_bytes, flag=self.color_type, backend=self.imdecode_backend)` with `img = mmcv.imfrombytes(
-                img_bytes, flag=self.color_type, backend="pillow")` of file transform/loading.py in mmcv
+                img_bytes, flag=self.color_type, backend="pillow")` of file .venv/lib/python3.11/site-packages/mmcv/transforms/loading.py in mmcv
 
