@@ -185,7 +185,7 @@ visualizer = dict(
 optim_wrapper = dict(
     type='OptimWrapper',
     optimizer=dict(type='SGD', lr=0.0003, momentum=0.9, weight_decay=0.0005))
-train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=1500, val_interval=50)
+train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=1500, val_interval=1)
 val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 param_scheduler = [dict(type='PolyLR', power=0.9, eta_min=1e-07, end=1500)]
