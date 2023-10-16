@@ -65,7 +65,7 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
 
-In which case just uncomment the assert statement in `.venv/lib/python3.11/site-packages/mmcls/__init__.py` and 
+In which case just comment the assert statement in `.venv/lib/python3.11/site-packages/mmcls/__init__.py` and 
 everything should work.
 
 img shape error needs in `results['img_shape'] = img.shape[:2]` replace line 102 `img = mmcv.imfrombytes(
