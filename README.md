@@ -12,7 +12,7 @@ There should be folder `cuneiform-ocr-classification-detection/checkpoints/` wit
 - torch=="2.0.1", torchvision
 - pip install -U openmim 
 - mim install mmengine (tested with 0.8.3)
-- mim install "mmcls==1.0.0rc5" (installing as a dependency "mmcv==2.0.0"
+- mim install "mmcls==1.0.0rc5" (installing as a dependency "mmcv==2.0.0")
 - mim install "mmdet==3.0.0rc6"
 - mim install mmocr #tested with version 1.0.1
 - pip install -r requirements.txt
@@ -28,8 +28,8 @@ There should be folder `cuneiform-ocr-classification-detection/checkpoints/` wit
     - textdet_test.json
     - textdet_train.json
 
-- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn_debug.py # validation set is used after one epoch to make sure everything is working
-- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn.py # validation set is used after 50 epochs
+- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn_debug.py #validation set is used after one epoch to make sure everything is working
+- python3 mmocr_tools/train.py custom_configs/fcenet_dcvn.py #validation set is used after 50 epochs
 #### Testing
 - cd cuneiform_ocr/detection
 - python3 mmocr_tools/test.py custom_configs/fcenet_dcvn.py ../../checkpoints/fcenet_resnet50-dcnv2.pth  (replace checkpoints with trained checkpoints)
