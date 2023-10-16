@@ -5,6 +5,7 @@ repository (https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr) bas
 This is due to dependencies of the two repositories. For the data use https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr-data.
 
 The checkpoints of the pretrained models can be found here: https://syncandshare.lrz.de/getlink/fi39rfQ11LtbxEBTmwVs2u/
+There should be folder `cuneiform-ocr-classification-detection/checkpoints/` with all checkpoints
 
 
 ### Requirements (Tested with Python 3.11 )
