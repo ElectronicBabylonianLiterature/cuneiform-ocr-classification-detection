@@ -70,5 +70,5 @@ everything should work.
 
 img shape error needs in `results['img_shape'] = img.shape[:2]` replace line 102 `img = mmcv.imfrombytes(
                 img_bytes, flag=self.color_type, backend=self.imdecode_backend)` with `img = mmcv.imfrombytes(
-                img_bytes, flag=self.color_type, backend="pillow")` of file transform/loading.py in mmcv
+                img_bytes, flag=self.color_type, backend="pillow")` of file .venv/lib/python3.11/site-packages/mmcv/transforms/loading.py in mmcv
 
