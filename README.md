@@ -11,11 +11,9 @@ The checkpoints of the pretrained models can be found here: https://syncandshare
 - torch=="2.0.1", torchvision
 - pip install -U openmim 
 - mim install mmengine (tested with 0.8.3)
-- mim install "mmcv==2.0.0rc4"
+- mim install "mmcls==1.0.0rc5" (installing as a dependency "mmcv==2.0.0"
 - mim install "mmdet==3.0.0rc6"
-- mim install "mmocr==1.0.0rc6"
-- mim install "mmcls==1.0.0rc5"
-
+- mim install mmocr #tested with version 1.0.1
 
 
 ### Detection
