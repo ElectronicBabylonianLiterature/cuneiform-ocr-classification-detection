@@ -8,7 +8,7 @@ The checkpoints of the pretrained models can be found here: https://syncandshare
 
 
 ### Requirements (Tested with Python 3.11 )
-- torch, torchvision
+- torch=="2.0.1", torchvision
 - pip install -U openmim 
 - mim install mmengine (tested with 0.8.3)
 - mim install "mmcv==2.0.0rc4"
