@@ -1,3 +1,4 @@
+.venv/*
 cuneiform_ocr/classification/data
 cuneiform_ocr/detection/data
 checkpoints
