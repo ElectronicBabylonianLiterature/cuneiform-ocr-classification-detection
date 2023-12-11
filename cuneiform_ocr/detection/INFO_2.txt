@@ -1,0 +1,748 @@
+/home/ubuntu/cuneiform-ocr-classification-detection/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:546: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+12/03 19:22:49 - mmengine - INFO - 
+------------------------------------------------------------
+System environment:
+    sys.platform: linux
+    Python: 3.11.6 (main, Oct 23 2023, 22:47:21) [GCC 9.4.0]
+    CUDA available: True
+    numpy_random_seed: 49949485
+    GPU 0: Tesla V100-PCIE-16GB
+    CUDA_HOME: /usr
+    NVCC: Cuda compilation tools, release 10.1, V10.1.24
+    GCC: x86_64-linux-gnu-gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+    PyTorch: 2.0.1+cu117
+    PyTorch compiling details: PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201703
+  - Intel(R) oneAPI Math Kernel Library Version 2022.2-Product Build 20220804 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.7.3 (Git Hash 6dbeffbae1f23cbbeae17adb7b5b13f1f37c080e)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -D_GLIBCXX_USE_CXX11_ABI=0 -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOROCTRACER -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_DISABLE_GPU_ASSERTS=ON, TORCH_VERSION=2.0.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=1, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+    TorchVision: 0.15.2+cu117
+    OpenCV: 4.8.1
+    MMEngine: 0.10.1
+
+Runtime environment:
+    cudnn_benchmark: True
+    mp_cfg: {'mp_start_method': 'fork', 'opencv_num_threads': 0}
+    dist_cfg: {'backend': 'nccl'}
+    seed: 49949485
+    Distributed launcher: none
+    Distributed training: False
+    GPU number: 1
+------------------------------------------------------------
+
+12/03 19:22:49 - mmengine - INFO - Config:
+auto_scale_lr = dict(base_batch_size=8)
+custom_hooks = [
+    dict(by_epoch=True, type='CustomTensorboardLoggerHook'),
+]
+default_hooks = dict(
+    checkpoint=dict(interval=100, type='CheckpointHook'),
+    logger=dict(interval=1, type='CustomLoggerHook'),
+    param_scheduler=dict(type='ParamSchedulerHook'),
+    sampler_seed=dict(type='DistSamplerSeedHook'),
+    sync_buffer=dict(type='SyncBuffersHook'),
+    timer=dict(type='IterTimerHook'),
+    visualization=dict(
+        draw_gt=True,
+        draw_pred=True,
+        enable=True,
+        interval=1,
+        show=False,
+        type='VisualizationHook'))
+default_scope = 'mmocr'
+env_cfg = dict(
+    cudnn_benchmark=True,
+    dist_cfg=dict(backend='nccl'),
+    mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
+file_client_args = dict(backend='disk')
+launcher = 'none'
+load_from = '../../checkpoints/fcenet_resnet50-dcnv2.pth'
+log_level = 'INFO'
+log_processor = dict(by_epoch=True, type='LogProcessor', window_size=10)
+model = dict(
+    backbone=dict(
+        depth=50,
+        frozen_stages=-1,
+        init_cfg=dict(checkpoint='torchvision://resnet50', type='Pretrained'),
+        norm_cfg=dict(requires_grad=True, type='BN'),
+        norm_eval=True,
+        num_stages=4,
+        out_indices=(
+            1,
+            2,
+            3,
+        ),
+        style='pytorch',
+        type='mmdet.ResNet'),
+    data_preprocessor=dict(
+        bgr_to_rgb=True,
+        mean=[
+            86.65888836888392,
+            67.92744567921709,
+            53.78325960605914,
+        ],
+        pad_size_divisor=32,
+        std=[
+            68.98970994105028,
+            57.20489382979894,
+            48.230552014910586,
+        ],
+        type='TextDetDataPreprocessor'),
+    det_head=dict(
+        fourier_degree=5,
+        in_channels=256,
+        module_loss=dict(
+            level_proportion_range=(
+                (
+                    0,
+                    0.25,
+                ),
+                (
+                    0.2,
+                    0.65,
+                ),
+                (
+                    0.55,
+                    1.0,
+                ),
+            ),
+            num_sample=50,
+            type='FCEModuleLoss'),
+        postprocessor=dict(
+            alpha=1.0,
+            beta=2.0,
+            num_reconstr_points=50,
+            scales=(
+                8,
+                16,
+                32,
+            ),
+            score_thr=0.3,
+            text_repr_type='poly',
+            type='FCEPostprocessor'),
+        type='FCEHead'),
+    neck=dict(
+        act_cfg=None,
+        add_extra_convs='on_output',
+        in_channels=[
+            512,
+            1024,
+            2048,
+        ],
+        num_outs=3,
+        out_channels=256,
+        relu_before_extra_convs=True,
+        type='mmdet.FPN'),
+    type='FCENet')
+optim_wrapper = dict(
+    optimizer=dict(lr=0.001, momentum=0.9, type='SGD', weight_decay=0.0005),
+    type='OptimWrapper')
+optimizer_config = dict(
+    cumulative_iters=2, type='GradientCumulativeOptimizerHook')
+param_scheduler = [
+    dict(end=1500, eta_min=1e-07, power=0.9, type='PolyLR'),
+]
+randomness = dict(seed=None)
+resume = True
+test_cfg = dict(type='TestLoop')
+test_dataloader = dict(
+    batch_size=4,
+    dataset=dict(
+        ann_file='textdet_test.json',
+        data_root='data/icdar2015',
+        pipeline=[
+            dict(
+                color_type='color_ignore_orientation',
+                file_client_args=dict(backend='disk'),
+                type='LoadImageFromFile'),
+            dict(keep_ratio=True, scale=(
+                2260,
+                2260,
+            ), type='Resize'),
+            dict(
+                type='LoadOCRAnnotations',
+                with_bbox=True,
+                with_label=True,
+                with_polygon=True),
+            dict(
+                meta_keys=(
+                    'img_path',
+                    'ori_shape',
+                    'img_shape',
+                    'scale_factor',
+                ),
+                type='PackTextDetInputs'),
+        ],
+        test_mode=True,
+        type='OCRDataset'),
+    num_workers=8,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+test_evaluator = dict(type='HmeanIOUMetric')
+train_cfg = dict(max_epochs=1000, type='EpochBasedTrainLoop', val_interval=100)
+train_dataloader = dict(
+    batch_size=4,
+    dataset=dict(
+        ann_file='textdet_train.json',
+        data_root='data/icdar2015',
+        filter_cfg=dict(filter_empty_gt=True, min_size=32),
+        pipeline=[
+            dict(
+                color_type='color_ignore_orientation',
+                file_client_args=dict(backend='disk'),
+                type='LoadImageFromFile'),
+            dict(
+                type='LoadOCRAnnotations',
+                with_bbox=True,
+                with_label=True,
+                with_polygon=True),
+            dict(min_poly_points=4, type='FixInvalidPolygon'),
+            dict(
+                keep_ratio=True,
+                ratio_range=(
+                    0.75,
+                    2.5,
+                ),
+                scale=(
+                    800,
+                    800,
+                ),
+                type='RandomResize'),
+            dict(
+                crop_ratio=0.5,
+                iter_num=1,
+                min_area_ratio=0.2,
+                type='TextDetRandomCropFlip'),
+            dict(
+                prob=0.8,
+                transforms=[
+                    dict(min_side_ratio=0.3, type='RandomCrop'),
+                ],
+                type='RandomApply'),
+            dict(
+                prob=0.6,
+                transforms=[
+                    dict(
+                        max_angle=35,
+                        pad_with_fixed_color=True,
+                        type='RandomRotate',
+                        use_canvas=True),
+                ],
+                type='RandomApply'),
+            dict(
+                prob=[
+                    0.6,
+                    0.4,
+                ],
+                transforms=[
+                    [
+                        dict(keep_ratio=True, scale=800, type='Resize'),
+                        dict(size=(
+                            800,
+                            800,
+                        ), type='Pad'),
+                    ],
+                    dict(keep_ratio=False, scale=800, type='Resize'),
+                ],
+                type='RandomChoice'),
+            dict(direction='horizontal', prob=0.5, type='RandomFlip'),
+            dict(direction='vertical', prob=0.5, type='RandomFlip'),
+            dict(
+                prob=0.3333333333333333,
+                transforms=[
+                    dict(
+                        alpha=75.0,
+                        op='ElasticTransform',
+                        type='TorchVisionWrapper'),
+                ],
+                type='RandomApply'),
+            dict(
+                prob=0.75,
+                transforms=[
+                    dict(
+                        prob=[
+                            0.3333333333333333,
+                            0.3333333333333333,
+                            0.3333333333333333,
+                        ],
+                        transforms=[
+                            dict(
+                                op='RandomAdjustSharpness',
+                                sharpness_factor=0,
+                                type='TorchVisionWrapper'),
+                            dict(
+                                op='RandomAdjustSharpness',
+                                sharpness_factor=60,
+                                type='TorchVisionWrapper'),
+                            dict(
+                                op='RandomAdjustSharpness',
+                                sharpness_factor=90,
+                                type='TorchVisionWrapper'),
+                        ],
+                        type='RandomChoice'),
+                ],
+                type='RandomApply'),
+            dict(
+                brightness=0.15,
+                contrast=0.3,
+                op='ColorJitter',
+                saturation=0.5,
+                type='TorchVisionWrapper'),
+            dict(
+                prob=0.8,
+                transforms=[
+                    dict(
+                        prob=[
+                            0.5,
+                            0.5,
+                        ],
+                        transforms=[
+                            dict(
+                                op='RandomEqualize',
+                                type='TorchVisionWrapper'),
+                            dict(
+                                op='RandomAutocontrast',
+                                type='TorchVisionWrapper'),
+                        ],
+                        type='RandomChoice'),
+                ],
+                type='RandomApply'),
+            dict(min_poly_points=4, type='FixInvalidPolygon'),
+            dict(
+                meta_keys=(
+                    'img_path',
+                    'ori_shape',
+                    'img_shape',
+                    'scale_factor',
+                ),
+                type='PackTextDetInputs'),
+        ],
+        type='OCRDataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=True, type='DefaultSampler'))
+train_pipeline = [
+    dict(
+        color_type='color_ignore_orientation',
+        file_client_args=dict(backend='disk'),
+        type='LoadImageFromFile'),
+    dict(
+        type='LoadOCRAnnotations',
+        with_bbox=True,
+        with_label=True,
+        with_polygon=True),
+    dict(min_poly_points=4, type='FixInvalidPolygon'),
+    dict(
+        keep_ratio=True,
+        ratio_range=(
+            0.75,
+            2.5,
+        ),
+        scale=(
+            800,
+            800,
+        ),
+        type='RandomResize'),
+    dict(
+        crop_ratio=0.5,
+        iter_num=1,
+        min_area_ratio=0.2,
+        type='TextDetRandomCropFlip'),
+    dict(
+        prob=0.8,
+        transforms=[
+            dict(min_side_ratio=0.3, type='RandomCrop'),
+        ],
+        type='RandomApply'),
+    dict(
+        prob=0.6,
+        transforms=[
+            dict(
+                max_angle=35,
+                pad_with_fixed_color=True,
+                type='RandomRotate',
+                use_canvas=True),
+        ],
+        type='RandomApply'),
+    dict(
+        prob=[
+            0.6,
+            0.4,
+        ],
+        transforms=[
+            [
+                dict(keep_ratio=True, scale=800, type='Resize'),
+                dict(size=(
+                    800,
+                    800,
+                ), type='Pad'),
+            ],
+            dict(keep_ratio=False, scale=800, type='Resize'),
+        ],
+        type='RandomChoice'),
+    dict(direction='horizontal', prob=0.5, type='RandomFlip'),
+    dict(direction='vertical', prob=0.5, type='RandomFlip'),
+    dict(
+        prob=0.3333333333333333,
+        transforms=[
+            dict(alpha=75.0, op='ElasticTransform', type='TorchVisionWrapper'),
+        ],
+        type='RandomApply'),
+    dict(
+        prob=0.75,
+        transforms=[
+            dict(
+                prob=[
+                    0.3333333333333333,
+                    0.3333333333333333,
+                    0.3333333333333333,
+                ],
+                transforms=[
+                    dict(
+                        op='RandomAdjustSharpness',
+                        sharpness_factor=0,
+                        type='TorchVisionWrapper'),
+                    dict(
+                        op='RandomAdjustSharpness',
+                        sharpness_factor=60,
+                        type='TorchVisionWrapper'),
+                    dict(
+                        op='RandomAdjustSharpness',
+                        sharpness_factor=90,
+                        type='TorchVisionWrapper'),
+                ],
+                type='RandomChoice'),
+        ],
+        type='RandomApply'),
+    dict(
+        brightness=0.15,
+        contrast=0.3,
+        op='ColorJitter',
+        saturation=0.5,
+        type='TorchVisionWrapper'),
+    dict(
+        prob=0.8,
+        transforms=[
+            dict(
+                prob=[
+                    0.5,
+                    0.5,
+                ],
+                transforms=[
+                    dict(op='RandomEqualize', type='TorchVisionWrapper'),
+                    dict(op='RandomAutocontrast', type='TorchVisionWrapper'),
+                ],
+                type='RandomChoice'),
+        ],
+        type='RandomApply'),
+    dict(min_poly_points=4, type='FixInvalidPolygon'),
+    dict(
+        meta_keys=(
+            'img_path',
+            'ori_shape',
+            'img_shape',
+            'scale_factor',
+        ),
+        type='PackTextDetInputs'),
+]
+train_pipeline_enhanced = [
+    dict(
+        color_type='color_ignore_orientation',
+        file_client_args=dict(backend='disk'),
+        type='LoadImageFromFile'),
+    dict(
+        type='LoadOCRAnnotations',
+        with_bbox=True,
+        with_label=True,
+        with_polygon=True),
+    dict(min_poly_points=4, type='FixInvalidPolygon'),
+    dict(
+        keep_ratio=True,
+        ratio_range=(
+            0.75,
+            2.5,
+        ),
+        scale=(
+            800,
+            800,
+        ),
+        type='RandomResize'),
+    dict(
+        crop_ratio=0.5,
+        iter_num=1,
+        min_area_ratio=0.2,
+        type='TextDetRandomCropFlip'),
+    dict(
+        prob=0.8,
+        transforms=[
+            dict(min_side_ratio=0.3, type='RandomCrop'),
+        ],
+        type='RandomApply'),
+    dict(
+        prob=0.6,
+        transforms=[
+            dict(
+                max_angle=35,
+                pad_with_fixed_color=True,
+                type='RandomRotate',
+                use_canvas=True),
+        ],
+        type='RandomApply'),
+    dict(
+        prob=[
+            0.6,
+            0.4,
+        ],
+        transforms=[
+            [
+                dict(keep_ratio=True, scale=800, type='Resize'),
+                dict(size=(
+                    800,
+                    800,
+                ), type='Pad'),
+            ],
+            dict(keep_ratio=False, scale=800, type='Resize'),
+        ],
+        type='RandomChoice'),
+    dict(direction='horizontal', prob=0.5, type='RandomFlip'),
+    dict(direction='vertical', prob=0.5, type='RandomFlip'),
+    dict(
+        prob=0.3333333333333333,
+        transforms=[
+            dict(alpha=75.0, op='ElasticTransform', type='TorchVisionWrapper'),
+        ],
+        type='RandomApply'),
+    dict(
+        prob=0.75,
+        transforms=[
+            dict(
+                prob=[
+                    0.3333333333333333,
+                    0.3333333333333333,
+                    0.3333333333333333,
+                ],
+                transforms=[
+                    dict(
+                        op='RandomAdjustSharpness',
+                        sharpness_factor=0,
+                        type='TorchVisionWrapper'),
+                    dict(
+                        op='RandomAdjustSharpness',
+                        sharpness_factor=60,
+                        type='TorchVisionWrapper'),
+                    dict(
+                        op='RandomAdjustSharpness',
+                        sharpness_factor=90,
+                        type='TorchVisionWrapper'),
+                ],
+                type='RandomChoice'),
+        ],
+        type='RandomApply'),
+    dict(
+        brightness=0.15,
+        contrast=0.3,
+        op='ColorJitter',
+        saturation=0.5,
+        type='TorchVisionWrapper'),
+    dict(
+        prob=0.8,
+        transforms=[
+            dict(
+                prob=[
+                    0.5,
+                    0.5,
+                ],
+                transforms=[
+                    dict(op='RandomEqualize', type='TorchVisionWrapper'),
+                    dict(op='RandomAutocontrast', type='TorchVisionWrapper'),
+                ],
+                type='RandomChoice'),
+        ],
+        type='RandomApply'),
+    dict(min_poly_points=4, type='FixInvalidPolygon'),
+    dict(
+        meta_keys=(
+            'img_path',
+            'ori_shape',
+            'img_shape',
+            'scale_factor',
+        ),
+        type='PackTextDetInputs'),
+]
+val_cfg = dict(type='ValLoop')
+val_dataloader = dict(
+    batch_size=8,
+    dataset=dict(
+        ann_file='textdet_test.json',
+        data_root='data/icdar2015',
+        pipeline=[
+            dict(
+                color_type='color_ignore_orientation',
+                file_client_args=dict(backend='disk'),
+                type='LoadImageFromFile'),
+            dict(keep_ratio=True, scale=(
+                2260,
+                2260,
+            ), type='Resize'),
+            dict(
+                type='LoadOCRAnnotations',
+                with_bbox=True,
+                with_label=True,
+                with_polygon=True),
+            dict(
+                meta_keys=(
+                    'img_path',
+                    'ori_shape',
+                    'img_shape',
+                    'scale_factor',
+                ),
+                type='PackTextDetInputs'),
+        ],
+        test_mode=True,
+        type='OCRDataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+val_evaluator = dict(type='HmeanIOUMetric')
+vis_backends = [
+    dict(type='LocalVisBackend'),
+]
+visualizer = dict(
+    name='visualizer',
+    type='TextDetLocalVisualizer',
+    vis_backends=[
+        dict(type='LocalVisBackend'),
+        dict(type='TensorboardVisBackend'),
+    ])
+work_dir = 'logs/yunus'
+
+12/03 19:22:52 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
+12/03 19:22:52 - mmengine - INFO - Hooks will be executed in the following order:
+before_run:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(BELOW_NORMAL) CustomLoggerHook                   
+(BELOW_NORMAL) CustomTensorboardLoggerHook        
+ -------------------- 
+before_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_train_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DistSamplerSeedHook                
+ -------------------- 
+before_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) CustomLoggerHook                   
+(BELOW_NORMAL) CustomTensorboardLoggerHook        
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_train_epoch:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) SyncBuffersHook                    
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_val_epoch:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) SyncBuffersHook                    
+ -------------------- 
+before_val_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_val_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) VisualizationHook                  
+(BELOW_NORMAL) CustomLoggerHook                   
+(BELOW_NORMAL) CustomTensorboardLoggerHook        
+ -------------------- 
+after_val_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) CustomLoggerHook                   
+(BELOW_NORMAL) CustomTensorboardLoggerHook        
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_test_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_test_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_test_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) VisualizationHook                  
+(BELOW_NORMAL) CustomLoggerHook                   
+(BELOW_NORMAL) CustomTensorboardLoggerHook        
+ -------------------- 
+after_test_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) CustomLoggerHook                   
+(BELOW_NORMAL) CustomTensorboardLoggerHook        
+ -------------------- 
+after_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_run:
+(BELOW_NORMAL) CustomLoggerHook                   
+(BELOW_NORMAL) CustomTensorboardLoggerHook        
+ -------------------- 
+12/03 19:22:53 - mmengine - INFO - load model from: torchvision://resnet50
+12/03 19:22:53 - mmengine - INFO - Loads checkpoint by torchvision backend from path: torchvision://resnet50
+12/03 19:22:53 - mmengine - WARNING - The model and loaded state dict do not match exactly
+
+unexpected key in source state_dict: fc.weight, fc.bias
+
+Loads checkpoint by local backend from path: ../../checkpoints/fcenet_resnet50-dcnv2.pth
+The model and loaded state dict do not match exactly
+
+unexpected key in source state_dict: data_preprocessor.mean, data_preprocessor.std, backbone.layer2.0.conv2.conv_offset.weight, backbone.layer2.0.conv2.conv_offset.bias, backbone.layer2.1.conv2.conv_offset.weight, backbone.layer2.1.conv2.conv_offset.bias, backbone.layer2.2.conv2.conv_offset.weight, backbone.layer2.2.conv2.conv_offset.bias, backbone.layer2.3.conv2.conv_offset.weight, backbone.layer2.3.conv2.conv_offset.bias, backbone.layer3.0.conv2.conv_offset.weight, backbone.layer3.0.conv2.conv_offset.bias, backbone.layer3.1.conv2.conv_offset.weight, backbone.layer3.1.conv2.conv_offset.bias, backbone.layer3.2.conv2.conv_offset.weight, backbone.layer3.2.conv2.conv_offset.bias, backbone.layer3.3.conv2.conv_offset.weight, backbone.layer3.3.conv2.conv_offset.bias, backbone.layer3.4.conv2.conv_offset.weight, backbone.layer3.4.conv2.conv_offset.bias, backbone.layer3.5.conv2.conv_offset.weight, backbone.layer3.5.conv2.conv_offset.bias, backbone.layer4.0.conv2.conv_offset.weight, backbone.layer4.0.conv2.conv_offset.bias, backbone.layer4.1.conv2.conv_offset.weight, backbone.layer4.1.conv2.conv_offset.bias, backbone.layer4.2.conv2.conv_offset.weight, backbone.layer4.2.conv2.conv_offset.bias
+
+12/03 19:22:53 - mmengine - INFO - Load checkpoint from ../../checkpoints/fcenet_resnet50-dcnv2.pth
+Traceback (most recent call last):
+  File "/home/ubuntu/cuneiform-ocr-classification-detection/cuneiform_ocr/detection/mmocr_tools/train.py", line 133, in <module>
+    main()
+  File "/home/ubuntu/cuneiform-ocr-classification-detection/cuneiform_ocr/detection/mmocr_tools/train.py", line 129, in main
+    runner.train()
+  File "/home/ubuntu/cuneiform-ocr-classification-detection/.venv/lib/python3.11/site-packages/mmengine/runner/runner.py", line 1765, in train
+    self.load_or_resume()
+  File "/home/ubuntu/cuneiform-ocr-classification-detection/.venv/lib/python3.11/site-packages/mmengine/runner/runner.py", line 1696, in load_or_resume
+    self.resume(resume_from)
+  File "/home/ubuntu/cuneiform-ocr-classification-detection/.venv/lib/python3.11/site-packages/mmengine/runner/runner.py", line 2022, in resume
+    self.train_loop._epoch = checkpoint['meta']['epoch']
+                             ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'epoch'
