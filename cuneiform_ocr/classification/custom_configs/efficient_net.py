@@ -28,7 +28,7 @@ vis_backends = [dict(type='LocalVisBackend')]
 visualizer = dict(
     type='ClsVisualizer', vis_backends=[dict(type='LocalVisBackend')])
 log_level = 'INFO'
-load_from = '../../checkpoints/efficientnet-b0_3rdparty_8xb32-aa-advprop_in1k_20220119-26434485.pth'
+load_from = '../../checkpoints/efficientnet.pth'
 resume = False
 randomness = dict(seed=None, deterministic=False)
 
