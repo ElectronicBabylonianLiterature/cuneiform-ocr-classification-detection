@@ -9,7 +9,7 @@ There should be folder `cuneiform-ocr-classification-detection/checkpoints/` wit
 
 
 ### Requirements (Tested with Python 3.11 )
-- torch==2.0.1, torchvision==0.15.2
+- torch==2.0.1, torchvision==0.15.2 (`pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118`) https://pytorch.org/get-started/previous-versions/
 - pip install -U openmim 
 - mim install mmengine (tested with 0.8.3)
 - `mim install "mmcls==1.0.0rc5"` (installing as a dependency "mmcv==2.0.0")
