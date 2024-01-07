@@ -5,13 +5,11 @@ import os.path as osp
 from copy import deepcopy
 
 import mmengine
-from mmcls import init_model, inference_model
 from mmengine.config import Config, ConfigDict, DictAction
 from mmengine.evaluator import DumpResults
 from mmengine.runner import Runner
 from cuneiform_ocr import custom_logger
-from cuneiform_ocr import custom_tensorboard_logger_hook
-from cuneiform_ocr import grayscale
+#from cuneiform_ocr import grayscale
 def parse_args():
     parser = argparse.ArgumentParser(
         description='MMPreTrain test (and eval) a model')

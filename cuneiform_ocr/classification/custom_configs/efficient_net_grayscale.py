@@ -1,3 +1,4 @@
+# have to import grayscale.py in test.py this way it will get "registered" for mmocr
 import copy
 
 num_classes = 142
