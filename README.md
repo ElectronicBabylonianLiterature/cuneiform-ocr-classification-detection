@@ -4,6 +4,9 @@ This Repository based on mmocr and mmcv can be used for training the Model once 
 repository (https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr) based on mmdetection to unify both models to get the final model.
 This is due to dependencies of the two repositories. For the data use https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr-data.
 
+Checkpoints and data can be found here [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10693501.svg)](https://doi.org/10.5281/zenodo.10693501).
+One needs to download ready-for-training.tar.gz and efficient-net and fcenet-net modelconfig and checkpoints. Ready-for-training contains several folders which can be copy pasted according to instructions below. For training the models one can download FCENet Weights pretrained on Icdar2015 from [mmocr](https://github.com/open-mmlab/mmocr) documentation and EfficientNet Weights pretrained on ImageNet from [mmpretrain](https://github.com/open-mmlab/mmpretrain) documentation.
+
 The checkpoints of the pretrained models can be found here: https://syncandshare.lrz.de/getlink/fi39rfQ11LtbxEBTmwVs2u/
 There should be folder `cuneiform-ocr-classification-detection/checkpoints/` with all checkpoints
 
