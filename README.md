@@ -1,6 +1,9 @@
 ## Two-Stage Cuneiform Sign Detection (Detecting Bounding Boxes + Image Classification)
 Data+Code is part of Paper **Sign Detection for Cuneiform Tablets from Yunus Cobanoglu, Luis Sáenz, Ilya Khait, Enrique Jiménez** please contact us for access to data on Zenodoo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10693601.svg)](https://doi.org/10.5281/zenodo.10693601) and paper as it is under currently under review.
 
+See [https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr/blob/main/README.md](https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr/blob/main/README.md) for overview and general information of all repositories associated with the paper from above.
+
+
 This Repository based on mmocr and mmcv can be used for training the Model once trained one has to use a different
 repository (https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr) based on mmdetection to unify both models to get the final model.
 This is due to dependencies of the two repositories. For the data use https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr-data.
