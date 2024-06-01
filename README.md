@@ -1,5 +1,7 @@
 ## Two-Stage Cuneiform Sign Detection (Detecting Bounding Boxes + Image Classification)
-Data+Code is part of Paper **Sign Detection for Cuneiform Tablets from Yunus Cobanoglu, Luis Sáenz, Ilya Khait, Enrique Jiménez** please contact us for access to data on Zenodoo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10693601.svg)](https://doi.org/10.5281/zenodo.10693601) and paper as it is under currently under review. See [https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr/blob/main/README.md](https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr/blob/main/README.md) for overview and general information of all repositories associated with the paper from above.
+Data+Code is part of Paper [Sign Detection for Cuneiform Tablets from Yunus Cobanoglu, Luis Sáenz, Ilya Khait, Enrique Jiménez](https://www.degruyter.com/document/doi/10.1515/itit-2024-0028/html).<br\>
+This paper contains the Two-Stage Model. One-Stage model is [here](https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr).
+Data on Zenodoo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10693601.svg)](https://doi.org/10.5281/zenodo.10693601) and paper as it is under currently under review. See [https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr/blob/main/README.md](https://github.com/ElectronicBabylonianLiterature/cuneiform-ocr/blob/main/README.md) for overview and general information of all repositories associated with the paper from above.
 
 
 This Repository based on mmocr and mmcv can be used for training the Model once trained one has to use a different
@@ -76,4 +78,16 @@ everything should work.
 img shape error needs in `results['img_shape'] = img.shape[:2]` replace line 102 `img = mmcv.imfrombytes(
                 img_bytes, flag=self.color_type, backend=self.imdecode_backend)` with `img = mmcv.imfrombytes(
                 img_bytes, flag=self.color_type, backend="pillow")` of file .venv/lib/python3.11/site-packages/mmcv/transforms/loading.py in mmcv
-
+## Cite this paper
+```
+@article{CobanogluSáenzKhaitJiménez+2024,
+url = {https://doi.org/10.1515/itit-2024-0028},
+title = {Sign detection for cuneiform tablets},
+title = {},
+author = {Yunus Cobanoglu and Luis Sáenz and Ilya Khait and Enrique Jiménez},
+journal = {it - Information Technology},
+doi = {doi:10.1515/itit-2024-0028},
+year = {2024},
+lastchecked = {2024-06-01}
+}
+```
